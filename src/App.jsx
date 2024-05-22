@@ -1,6 +1,10 @@
 
 import './App.css'
-import Navbar from './components/Navbar/Navbar';
+import { Routes,Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard/Dashboard.jsx';
+import Signup from './components/Signup/Signup.jsx';
+import Login from './components/Login/Login.jsx';
+
 
 
 //Import Components
@@ -14,39 +18,17 @@ const {fetchPlayers} = playerService; //Destructure - Access fetchPlayers() dire
 
 const App = () => {
 
-  //State
-  const [playerList, setPlayerList] = useState([]);
-  const [myTeam, setMyTeam] = useState([]);
-  
-  //Functions
-  const fetchPlayersDatabase = async () => {
-    try{
-      const listOfPlayers = await fetchPlayers();
-      setPlayerList(listOfPlayers);
-    }catch(error){
-      console.error(`Error fetching players: ${error}`);
-    }
-  };
 
-  useEffect(()=>{
-    fetchPlayersDatabase();
-  }, [])
-
-
-
-  return (
-
-    <>
-    
-      <Navbar />
-    
-      <PlayerList playerList={playerList} setMyTeam={setMyTeam} myTeam={myTeam} />
-
-      <MyTeam myTeam={myTeam} setMyTeam={setMyTeam}/>
-
-    </>
-
-  )
+  return(
+    <main>
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/register' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </main>
+     );
+}
 
 
 export default App;
