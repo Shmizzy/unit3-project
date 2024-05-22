@@ -1,10 +1,15 @@
 
+import './App.css'
+import Navbar from './components/Navbar/Navbar';
+
+
 //Import Components
 import PlayerList from './components/PlayerList.jsx';
 
 import {useEffect, useState} from "react";
 import * as playerService from "../services/playerService.js";
 const {fetchPlayers} = playerService; //Destructure - Access fetchPlayers() directly
+
 
 const App = () => {
 
@@ -28,13 +33,11 @@ const App = () => {
   
   return(
 
-    <>
-    
+    <main>
+      <Navbar />
       <PlayerList playerList={playerList}/>
-
-    </>
-
-  )
+      <h1>WELCOME</h1>
+    </main> )
 }
 
 export default App;
