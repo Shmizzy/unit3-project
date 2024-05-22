@@ -4,7 +4,8 @@ import Navbar from './components/Navbar/Navbar';
 
 
 //Import Components
-import PlayerList from './components/PlayerList.jsx';
+import PlayerList from './components/PlayerList/PlayerList.jsx';
+import MyTeam from './components/MyTeam/MyTeam.jsx';
 
 import {useEffect, useState} from "react";
 import * as playerService from "../services/playerService.js";
@@ -15,6 +16,7 @@ const App = () => {
 
   //State
   const [playerList, setPlayerList] = useState([]);
+  const [myTeam, setMyTeam] = useState([]);
   
   //Functions
   const fetchPlayersDatabase = async () => {
@@ -30,14 +32,21 @@ const App = () => {
     fetchPlayersDatabase();
   }, [])
 
-  
-  return(
 
-    <main>
+
+  return (
+
+    <>
+    
       <Navbar />
-      <PlayerList playerList={playerList}/>
-      <h1>WELCOME</h1>
-    </main> )
-}
+    
+      <PlayerList playerList={playerList} setMyTeam={setMyTeam} myTeam={myTeam} />
+
+      <MyTeam myTeam={myTeam} setMyTeam={setMyTeam}/>
+
+    </>
+
+  )
+
 
 export default App;
