@@ -1,13 +1,16 @@
+import MyTeam from "../MyTeam/MyTeam.jsx";
 import Navbar from "../Navbar/Navbar.jsx"
 import PlayerList from "../Playerlist/Playerlist.jsx";
 import {useEffect, useState} from "react";
 import * as playerService from "../../services/playerService.js";
+
 const {fetchPlayers} = playerService; //Destructure - Access fetchPlayers() directly
 
 const Dashboard = () => {
     //State
   const [playerList, setPlayerList] = useState([]);
-  
+  const [myTeam, setMyTeam] = useState([]);
+
   //Functions
   const fetchPlayersDatabase = async () => {
     try{
@@ -25,7 +28,8 @@ const Dashboard = () => {
     return(
         <main>
             <Navbar />
-            <PlayerList playerList={playerList}/>
+            <PlayerList playerList={playerList} setMyTeam={setMyTeam} myTeam={myTeam} />
+            <MyTeam myTeam={myTeam} setMyTeam={setMyTeam}/>
         </main>
     )
 }
