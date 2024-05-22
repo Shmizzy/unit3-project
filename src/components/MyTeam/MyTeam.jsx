@@ -7,7 +7,6 @@ const MyTeam = (props) => {
 
     //Functions
     const handleRemove = (player) => {
-        console.log("removed")
         console.log(myTeam)
         const filteredTeam = [...myTeam].filter((mainPlayer) => {
             return mainPlayer !== player;
@@ -30,6 +29,11 @@ const MyTeam = (props) => {
                 )
             })}
         </ul>
+
+        {myTeam.length === 5 && (
+            <button>Save Team</button>
+        )}
+
     </div>
 
   )
