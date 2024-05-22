@@ -37,9 +37,7 @@ const App = () => {
   return (
 
     <>
-    
-      <Navbar />
-    
+      
       <PlayerList playerList={playerList} setMyTeam={setMyTeam} myTeam={myTeam} />
 
       <MyTeam myTeam={myTeam} setMyTeam={setMyTeam}/>
