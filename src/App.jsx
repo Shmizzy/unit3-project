@@ -1,4 +1,8 @@
 
+import './App.css'
+import Navbar from './components/Navbar/Navbar';
+
+
 //Import Components
 import PlayerList from './components/PlayerList/PlayerList.jsx';
 import MyTeam from './components/MyTeam/MyTeam.jsx';
@@ -6,6 +10,7 @@ import MyTeam from './components/MyTeam/MyTeam.jsx';
 import {useEffect, useState} from "react";
 import * as playerService from "../services/playerService.js";
 const {fetchPlayers} = playerService; //Destructure - Access fetchPlayers() directly
+
 
 const App = () => {
 
@@ -29,9 +34,11 @@ const App = () => {
 
 
 
-  return(
+  return (
 
     <>
+    
+      <Navbar />
     
       <PlayerList playerList={playerList} setMyTeam={setMyTeam} myTeam={myTeam} />
 
@@ -40,6 +47,6 @@ const App = () => {
     </>
 
   )
-}
+
 
 export default App;
