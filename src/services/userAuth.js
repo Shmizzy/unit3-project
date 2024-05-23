@@ -24,11 +24,15 @@ const login = async(formData) => {
         const data = await res.json();
         if(data.token){
             localStorage.setItem('token', data.token);
-            const user = JSON.parse(atob(json.token.split('.')[1]));
+            const user = JSON.parse(atob(data.token.split('.')[1]));
             return user;
         }
+        if (data.message) {
+            throw new Error(data.message);
+        }
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        throw error;
     }
 }
 

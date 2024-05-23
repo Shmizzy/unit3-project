@@ -18,14 +18,14 @@ const App = () => {
   }
 
   return(
-    <>
-      <Navbar handleSignout={handleSignout} user={user}/>
+    <AuthedUserContext.Provider value={user}>
+      <Navbar handleSignout={handleSignout}/>
       <Routes>
         <Route path='/' element={<Dashboard handleSignout={handleSignout}/>} />
         <Route path='/register' element={<Signup setUser={setUser}/>} />
         <Route path='/login' element={<Login setUser={setUser}/>} />
       </Routes>
-    </>
+    </AuthedUserContext.Provider>
      );
 }
 

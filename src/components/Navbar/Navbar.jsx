@@ -1,14 +1,19 @@
 import './navBar.css';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthedUserContext } from '../../App';
 
 
-const Navbar = (props) => {
-    if(props.user){
+const Navbar = ({handleSignout}) => {
+    const user = useContext(AuthedUserContext);
+    
+    if(user){
         return (
             <div className="navBar">
                 <h3 className='battle'>Battle</h3>
+                <h3>{user.username}</h3>
                 <div className='navButtons'>
-                    <button onClick={props.handleSignout}>Log Out</button>
+                    <button onClick={handleSignout}>Log Out</button>
                </div>
             </div>
         )
