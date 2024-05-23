@@ -1,8 +1,4 @@
 import MyTeam from "../MyTeam/MyTeam.jsx";
-<<<<<<< HEAD
-
-=======
->>>>>>> 379091596bcb09202387236820ae691dc513d90a
 import Form from "../Form/Form.jsx";
 import PlayerList from "../PlayerList/PlayerList.jsx";
 import {useEffect, useState} from "react";
