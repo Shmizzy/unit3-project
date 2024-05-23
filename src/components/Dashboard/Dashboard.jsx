@@ -58,9 +58,6 @@ const Dashboard = (props) => {
 
     return(
         <main>
-
-            <Navbar />
-
             <Form 
             handleCreatePlayer={handleCreatePlayer}
             />
