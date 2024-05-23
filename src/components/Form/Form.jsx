@@ -1,7 +1,7 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 
-const Form = ({handleCreatePlayer}) => {
+const Form = ({handleCreatePlayer, playerToEdit, setPlayerToEdit, handleEditPlayer}) => {
 
     //State
     const [formData, setFormData] = useState({
@@ -11,6 +11,17 @@ const Form = ({handleCreatePlayer}) => {
         rating: "",
     });
 
+    useEffect(()=>{
+        if(playerToEdit){
+            setFormData({
+                first_name: playerToEdit.first_name,
+                last_name: playerToEdit.last_name,
+                team: playerToEdit.team,
+                rating: playerToEdit.rating,
+            })
+        }
+    }, [playerToEdit])
+
     //Functions
     const handleInputChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value});
@@ -18,13 +29,18 @@ const Form = ({handleCreatePlayer}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleCreatePlayer(formData);
+        if(playerToEdit){
+            handleEditPlayer(playerToEdit._id, formData);
+        }else{
+            handleCreatePlayer(formData)
+        }
         setFormData({
             first_name: "",
             last_name: "",
             team: "",
             rating: "",
         });
+        setPlayerToEdit(null);
     };
 
 
@@ -44,7 +60,7 @@ const Form = ({handleCreatePlayer}) => {
         <label htmlFor="rating">Rating: </label>
         <input id="rating" name="rating" type="number" min="1" max="99" value={formData.rating} onChange={handleInputChange}></input>
 
-        <button type="submit">Submit</button>
+        <button type="submit">{playerToEdit ? "Edit" : "Create"}</button>
 
     </form>
 

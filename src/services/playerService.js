@@ -11,7 +11,7 @@ const fetchPlayers = async () => {
         console.log(data); //Debug
         return data;
     }catch(error){
-        console.error(error);
+        console.error(error.message);
     }
 };
 
@@ -21,7 +21,7 @@ const fetchNBATeam = async (team) => {
         const data = await response.json();
         return data;
     }catch(error){
-        console.error(error);
+        console.error(error.message);
     }
 };
 
@@ -33,7 +33,7 @@ const deletePlayer = async(id) => {
         const data = await response.json();
         console.log(data);
     }catch(error){
-        console.error(error);
+        console.error(error.message);
     }
 };
 
@@ -51,9 +51,25 @@ const createPlayer = async (playerData) => {
     }catch(error){
         console.error(error.message);
     }
-};  
+};
+
+const editPlayer = async (id, playerData) => {
+    try{
+        const response = await fetch(`${BASE_URL}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(playerData),
+        });
+        const data = await response.json();
+        console.log(data);
+    }catch(error){
+        console.error(error.message);
+    }
+};
 
 
 
 //Export
-export {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer};
+export {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer, editPlayer};
