@@ -1,5 +1,5 @@
 import MyTeam from "../MyTeam/MyTeam.jsx";
-import Navbar from "../Navbar/Navbar.jsx";
+
 import Form from "../Form/Form.jsx";
 import PlayerList from "../PlayerList/PlayerList.jsx";
 import {useEffect, useState} from "react";
@@ -7,7 +7,7 @@ import * as playerService from "../../services/playerService.js";
 
 const {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer} = playerService; //Destructure - Access fetchPlayers() directly
 
-const Dashboard = (props) => {
+const Dashboard = () => {
     //State
   
   const [playerList, setPlayerList] = useState([]);
