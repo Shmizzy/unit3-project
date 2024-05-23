@@ -1,4 +1,4 @@
-import { createContext,useState } from 'react';
+import { createContext,useEffect,useState } from 'react';
 import { Routes,Route } from 'react-router-dom';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
 import Signup from './components/Signup/Signup.jsx';
@@ -16,6 +16,24 @@ const App = () => {
     authService.signOut();
     setUser(null);
   }
+  useEffect(() => {
+    const fetchData = async() => {
+      try {
+        const token = localStorage.getItem('token');
+        if(!token) return null;
+        const res = await fetch('http://localhost:3000/auth/' + user.id ,{
+            headers: { Authorization: 'Bearer ' + token}
+        });
+        const data = await res.json();
+        console.log(data)
+        setUser(data.user)
+    } catch (error) {
+        console.log(error)
+    }
+    }
+    fetchData();
+  }, [])
+
 
   return(
     <AuthedUserContext.Provider value={user}>

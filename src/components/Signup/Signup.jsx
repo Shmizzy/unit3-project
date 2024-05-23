@@ -21,8 +21,8 @@ const Signup = (props) => {
         e.preventDefault();
         try {
             const newUser = await authService.register(formData);
-            props.setUser(newUser.user);
-            navigate('/')
+                props.setUser(newUser.user);
+                navigate('/')
         } catch (error) {
             updateMessage(error.message);
         }

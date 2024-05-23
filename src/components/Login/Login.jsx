@@ -23,6 +23,7 @@ const Login = (props) => {
         e.preventDefault();
         try {
             const user = await authService.login(formData);
+            console.log(user);
                 props.setUser(user);
                 navigate('/');     
         } catch (error) {
