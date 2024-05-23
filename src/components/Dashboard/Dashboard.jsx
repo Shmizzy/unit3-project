@@ -7,8 +7,9 @@ import * as playerService from "../../services/playerService.js";
 
 const {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer} = playerService; //Destructure - Access fetchPlayers() directly
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     //State
+  
   const [playerList, setPlayerList] = useState([]);
   const [myTeam, setMyTeam] = useState([]);
 
@@ -52,6 +53,8 @@ const Dashboard = () => {
   useEffect(()=>{
     fetchPlayersDatabase();
   }, [])
+
+  
 
     return(
         <main>
