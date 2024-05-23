@@ -2,7 +2,7 @@
 
 const PlayerList = (props) => {
 
-    const {playerList, setMyTeam, myTeam, handleDeletePlayer} = props;
+    const {playerList, setMyTeam, myTeam, handleDeletePlayer, setPlayerToEdit} = props;
 
     //Functions
     const handleAdd = (player) => {
@@ -11,6 +11,10 @@ const PlayerList = (props) => {
 
     const handleDelete = (id) => {
         handleDeletePlayer(id);
+    };
+
+    const handleEdit = (player) => {
+        setPlayerToEdit(player);
     }
 
 
@@ -27,6 +31,7 @@ const PlayerList = (props) => {
                         <h3>Team: {player.team}</h3>
                         <h3>Rating: {player.rating}</h3>
                         <button onClick={()=> handleAdd(player)} disabled={myTeam.length === 5 || false}>Add</button>
+                        <button onClick={()=> handleEdit(player)}>Edit</button>
                         <button onClick={()=> handleDelete(player._id)}>Delete</button>
                     </li>
                 )
