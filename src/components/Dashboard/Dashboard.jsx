@@ -4,10 +4,12 @@ import PlayerList from "../PlayerList/PlayerList.jsx";
 import {useEffect, useState} from "react";
 import * as playerService from "../../services/playerService.js";
 
+
 const {fetchPlayers} = playerService; //Destructure - Access fetchPlayers() directly
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     //State
+  
   const [playerList, setPlayerList] = useState([]);
   const [myTeam, setMyTeam] = useState([]);
 
@@ -25,9 +27,10 @@ const Dashboard = () => {
     fetchPlayersDatabase();
   }, [])
 
+  
+
     return(
         <main>
-            <Navbar />
             <PlayerList playerList={playerList} setMyTeam={setMyTeam} myTeam={myTeam} />
             <MyTeam myTeam={myTeam} setMyTeam={setMyTeam}/>
         </main>
