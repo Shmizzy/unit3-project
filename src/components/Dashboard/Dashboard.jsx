@@ -1,6 +1,6 @@
 import MyTeam from "../MyTeam/MyTeam.jsx";
 import Navbar from "../Navbar/Navbar.jsx"
-import PlayerList from "../Playerlist/Playerlist.jsx";
+import PlayerList from "../PlayerList/PlayerList.jsx";
 import {useEffect, useState} from "react";
 import * as playerService from "../../services/playerService.js";
 
