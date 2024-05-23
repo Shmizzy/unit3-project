@@ -37,7 +37,23 @@ const deletePlayer = async(id) => {
     }
 };
 
+const createPlayer = async (playerData) => {
+    try{
+        const response = await fetch(BASE_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(playerData),
+        });
+        const data = await response.json();
+        console.log(data);
+    }catch(error){
+        console.error(error.message);
+    }
+};  
+
 
 
 //Export
-export {fetchPlayers, fetchNBATeam, deletePlayer};
+export {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer};

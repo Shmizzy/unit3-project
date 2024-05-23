@@ -1,14 +1,14 @@
 import {useState} from "react";
 
 
-const Form = () => {
+const Form = ({handleCreatePlayer}) => {
 
     //State
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
         team: "",
-        rating: null,
+        rating: "",
     });
 
     //Functions
@@ -18,27 +18,34 @@ const Form = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        //POST route function
+        handleCreatePlayer(formData);
+        setFormData({
+            first_name: "",
+            last_name: "",
+            team: "",
+            rating: "",
+        });
     };
 
 
   return (
 
-    <form onSubmit={}>
+    <form onSubmit={handleSubmit}>
 
         <label htmlFor="first_name">First Name: </label>
-        <input id="first_name" name="first_name" type="text" value={formData.first_name} onChange={}></input>
+        <input id="first_name" name="first_name" type="text" value={formData.first_name} onChange={handleInputChange}></input>
 
         <label htmlFor="last_name">Last Name: </label>
-        <input id="last_name" name="last_name" type="text" value={formData.last_name} onChange={}></input>
+        <input id="last_name" name="last_name" type="text" value={formData.last_name} onChange={handleInputChange}></input>
 
         <label htmlFor="team">Team: </label>
-        <input id="team" name="team" type="text" value={formData.team} onChange={}></input>
+        <input id="team" name="team" type="text" value={formData.team} onChange={handleInputChange}></input>
 
         <label htmlFor="rating">Rating: </label>
-        <input id="rating" name="rating" type="number" min="1" max="99" value={formData.rating} onChange={}></input>
+        <input id="rating" name="rating" type="number" min="1" max="99" value={formData.rating} onChange={handleInputChange}></input>
 
         <button type="submit">Submit</button>
+
     </form>
 
   )
