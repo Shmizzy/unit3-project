@@ -26,8 +26,7 @@ const PlayerList = (props) => {
             {playerList.map((player)=>{
                 return (
                     <li key={player._id}>
-                        <h3>First Name: {player.first_name}</h3>
-                        <h3>Last Name: {player.last_name}</h3>
+                        <h3>Player: {player.first_name} {player.last_name}</h3>
                         <h3>Team: {player.team}</h3>
                         <h3>Rating: {player.rating}</h3>
                         <button onClick={()=> handleAdd(player)} disabled={myTeam.length === 5 || false}>Add</button>

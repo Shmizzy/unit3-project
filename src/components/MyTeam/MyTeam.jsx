@@ -24,6 +24,7 @@ const MyTeam = (props) => {
                     <li key={index}>
                         <h3>Player: {player.first_name} {player.last_name}</h3>
                         <h3>Team: {player.team}</h3>
+                        <h3>Rating: {player.rating}</h3>
                         <button onClick={()=> handleRemove(index)}>Remove</button>
                     </li>
                 )
