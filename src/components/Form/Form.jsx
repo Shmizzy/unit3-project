@@ -60,7 +60,7 @@ const Form = ({handleCreatePlayer, playerToEdit, setPlayerToEdit, handleEditPlay
         <label htmlFor="rating">Rating: </label>
         <input id="rating" name="rating" type="number" min="1" max="99" value={formData.rating} onChange={handleInputChange}></input>
 
-        <button type="submit">{playerToEdit ? "Edit" : "Create"}</button>
+        <button type="submit" disabled={formData.first_name === "" || formData.last_name === "" || formData.team === "" || formData.rating === "" ? true : false}>{playerToEdit ? "Edit" : "Create"}</button>
 
     </form>
 
