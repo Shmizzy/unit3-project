@@ -8,7 +8,7 @@ const MyTeam = (props) => {
     //Functions
     const handleRemove = (subIndex) => {
         console.log(myTeam)
-        const filteredTeam = [...myTeam].filter((mainPlayer, mainIndex) => {
+        const filteredTeam = [...myTeam].filter((mainPlayer,mainIndex) => {
             return mainIndex !== subIndex;
         });
         setMyTeam(filteredTeam);
@@ -19,7 +19,7 @@ const MyTeam = (props) => {
     <div className="myTeamContainer">
         <h2>My Team: </h2>
         <ul>
-            {myTeam.map((player, index)=>{
+            {myTeam.map((player,index)=>{
                 return (
                     <li key={index}>
                         <h3>Player: {player.first_name} {player.last_name}</h3>

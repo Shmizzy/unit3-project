@@ -1,45 +1,25 @@
 
-//Import Components
-import PlayerList from './components/PlayerList/PlayerList.jsx';
-import MyTeam from './components/MyTeam/MyTeam.jsx';
+import './App.css'
+import { Routes,Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard/Dashboard.jsx';
+import Signup from './components/Signup/Signup.jsx';
+import Login from './components/Login/Login.jsx';
 
-import {useEffect, useState} from "react";
-import * as playerService from "../services/playerService.js";
-const {fetchPlayers} = playerService; //Destructure - Access fetchPlayers() directly
+
 
 const App = () => {
 
-  //State
-  const [playerList, setPlayerList] = useState([]);
-  const [myTeam, setMyTeam] = useState([]);
-  
-  //Functions
-  const fetchPlayersDatabase = async () => {
-    try{
-      const listOfPlayers = await fetchPlayers();
-      setPlayerList(listOfPlayers);
-    }catch(error){
-      console.error(`Error fetching players: ${error}`);
-    }
-  };
-
-  useEffect(()=>{
-    fetchPlayersDatabase();
-  }, [])
-
-
 
   return(
-
-    <>
-    
-      <PlayerList playerList={playerList} setMyTeam={setMyTeam} myTeam={myTeam} />
-
-      <MyTeam myTeam={myTeam} setMyTeam={setMyTeam}/>
-
-    </>
-
-  )
+    <main>
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/register' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </main>
+     );
 }
+
 
 export default App;
