@@ -25,7 +25,7 @@ const login = async(formData) => {
         if(data.token){
             localStorage.setItem('token', data.token);
             const user = JSON.parse(atob(data.token.split('.')[1]));
-            return user;
+            return (user, data.user);
         }
         if (data.message) {
             throw new Error(data.message);
@@ -40,6 +40,7 @@ const getUser = () => {
     const token = localStorage.getItem('token');
     if(!token) return null;
     const user = JSON.parse(atob(token.split('.')[1]));
+    
     return user;
 }
 
