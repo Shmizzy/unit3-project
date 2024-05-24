@@ -39,14 +39,37 @@ const login = async (formData) => {
 const createTeam = async(teamData, userId) => {
     const token = localStorage.getItem('token');
     if(!token) return null;
+ 
     try {
         const res = await fetch(`${BASE_URL}/auth/${userId}/updateTeam`, {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}`},
-            body: JSON.stringify([...teamData])
+            method: 'PUT',
+            headers: { 
+                'Authorization': `Bearer ${token}`, 
+                'Content-Type': 'application/json'
+        },
+            body: JSON.stringify({team: teamData})
         })
         const data = await res.json();
         return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getTeam = async(userId) => {
+
+    const token = localStorage.getItem('token');
+    if(!token) return null;
+    try {
+        const res = await fetch(`${BASE_URL}/auth/${userId}/getTeam`, {
+            method: 'GET',
+            headers: { 
+                'Authorization': `Bearer ${token}`, 
+                'Content-Type': 'application/json'
+        },
+        })
+        const data = await res.json();
+        return data.team;
     } catch (error) {
         console.log(error)
     }
@@ -67,4 +90,4 @@ const signOut = () => {
 
 
 
-export { register, getUser, signOut, login, createTeam };
+export { register, getUser, signOut, login, createTeam, getTeam };

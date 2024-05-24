@@ -4,19 +4,21 @@ import {useState} from "react";
 import * as authService from '../../services/userAuth';
 import { useContext } from 'react';
 import { AuthedUserContext } from '../../App';
+import { useNavigate } from "react-router-dom";
 
 
 
 const MyTeam = (props) => {
     const user = useContext(AuthedUserContext);
+    const navigate = useNavigate();
     const {myTeam, setMyTeam} = props;
+    
 
     //State
     const [renderNBAForm, setRenderNBAForm] = useState("");
 
     //Functions
     const handleRemove = (subIndex) => {
-        console.log(myTeam)
         const filteredTeam = [...myTeam].filter((mainPlayer,mainIndex) => {
             return mainIndex !== subIndex;
         });
@@ -24,9 +26,9 @@ const MyTeam = (props) => {
     };
 
     const handleSetTeam = async () => {
-        const res = await authService.createTeam(myTeam, user._id);
-        console.log(res)
+        const res = await authService.createTeam(myTeam, user._id);     
         setMyTeam([]);
+        navigate('/battle');
     }
     
   return (
