@@ -1,13 +1,10 @@
 //Import
 import NBAForm from "../NBA-Form/NBAForm";
 import {useState} from "react";
-shmizzyz/Battle
 import * as authService from '../../services/userAuth';
 import { useContext } from 'react';
 import { AuthedUserContext } from '../../App';
 import { useNavigate } from "react-router-dom";
-
-
 import * as playerService from "../../services/playerService";
 import "./MyTeam.css";
 
