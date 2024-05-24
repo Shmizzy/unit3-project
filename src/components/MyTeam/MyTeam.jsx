@@ -18,6 +18,7 @@ const MyTeam = (props) => {
 
     <div className="myTeamContainer">
         <h2>My Team: </h2>
+        <h4>NBA Team</h4>
         <ul>
             {myTeam.map((player,index)=>{
                 return (

@@ -80,8 +80,6 @@ const Dashboard = () => {
               />
             )}
 
-    
-
             <PlayerList 
             playerList={playerList}
             setMyTeam={setMyTeam}
