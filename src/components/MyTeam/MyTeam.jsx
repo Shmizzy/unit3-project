@@ -1,9 +1,14 @@
-
+//Import
+import NBAForm from "../NBA-Form/NBAForm";
+import {useState} from "react";
 
 
 const MyTeam = (props) => {
     
     const {myTeam, setMyTeam} = props;
+
+    //State
+    const [renderNBAForm, setRenderNBAForm] = useState("");
 
     //Functions
     const handleRemove = (subIndex) => {
@@ -18,7 +23,11 @@ const MyTeam = (props) => {
 
     <div className="myTeamContainer">
         <h2>My Team: </h2>
-        <h4>NBA Team</h4>
+        <h4 onClick={()=> setRenderNBAForm("form")}>NBA</h4>
+        {renderNBAForm === "form" && (
+            <NBAForm setRenderNBAForm={setRenderNBAForm}/>
+        )}
+
         <ul>
             {myTeam.map((player,index)=>{
                 return (
