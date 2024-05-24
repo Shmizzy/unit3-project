@@ -69,7 +69,7 @@ const Dashboard = () => {
     return(
         <main>
 
-            <h4 onClick={()=> setPlayerForm("form")}>Player Form</h4>
+            <h4 onClick={()=> setPlayerForm("form")} style={playerForm === "form" ? {display: "none"} : {color: "black"}}>Player Form</h4>
             {playerForm === "form" && (
               <Form 
               handleCreatePlayer={handleCreatePlayer}
@@ -86,6 +86,7 @@ const Dashboard = () => {
             myTeam={myTeam}
             handleDeletePlayer={handleDeletePlayer}
             setPlayerToEdit={setPlayerToEdit}
+            setPlayerForm={setPlayerForm}
             />
 
             <MyTeam 
