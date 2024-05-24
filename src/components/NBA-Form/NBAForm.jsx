@@ -22,6 +22,7 @@ const NBAForm = ({setRenderNBAForm, fetchNBATeamData}) => {
 
     <form onSubmit={handleSubmit}>
         <label htmlFor="nbaTeam">Choose Team: </label>
+        {/* NOTE: Had to change how we were capturing the string value to insert as argument in our fetchNBATeamData() function - the selected "option value" (in string format) is the value for the "selectedTeam" state variable and the change is handled similarly using the state setter function and "event.target.value" because it is still considered an input and that is how we access it from the DOM */}
         <select id="nbaTeam" value={selectedTeam} onChange={handleInputChange}>
             <option value="">------ Select ------</option>
             <option value="Chicago Bulls">Chicago Bulls</option>
