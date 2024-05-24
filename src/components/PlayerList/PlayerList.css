@@ -22,3 +22,11 @@
 #playerList {
     list-style-image: url("../../assets/images/basketball-list.png");
 }
+
+#playerListItems {
+    background-color: orange;
+    padding: 0 0 10px 10px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow:  2px 2px 2px black;
+}
