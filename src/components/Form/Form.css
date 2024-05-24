@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+#playerForm {
+    display: flex;  
+}
+
+#playerForm input {
+    width: 100px;
+    height: 18px;
+    margin-left: 5px;
+}
+#playerForm input:invalid {
+    background-color: hsla(0, 100%, 91%, 0.75);
+}
+#playerForm input:valid {
+    background-color: hsla(132, 100%, 91%, 0.75);
+}
+
+#playerForm label {
+    font-size: .8rem;
+    margin-left: 5px;
+}
+
+#editCreateBtn {
+    background-color: hsla(35, 100%, 65%, 0.75);  
+}
+
+#backBtn {
+    background-color: hsla(0, 0%, 22%, 1);
+    color: white;
+}
+
+

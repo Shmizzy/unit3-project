@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Indie Flower", cursive;
+    font-weight: bold;
+}
+
+main {
+    background-color: hsla(35, 100%, 86%, 0.75);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+button {
+    font-size: .7rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+
+
+
+

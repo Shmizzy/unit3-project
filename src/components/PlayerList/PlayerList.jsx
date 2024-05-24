@@ -1,4 +1,4 @@
-
+import "./PlayerList.css";
 
 const PlayerList = (props) => {
 

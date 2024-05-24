@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import "./Form.css";
 
 
 const Form = ({handleCreatePlayer, playerToEdit, setPlayerToEdit, handleEditPlayer, setPlayerForm}) => {
@@ -46,22 +47,22 @@ const Form = ({handleCreatePlayer, playerToEdit, setPlayerToEdit, handleEditPlay
 
   return (
 
-    <form onSubmit={handleSubmit}>
+    <form id="playerForm" onSubmit={handleSubmit}>
 
         <label htmlFor="first_name">First Name: </label>
-        <input id="first_name" name="first_name" type="text" value={formData.first_name} onChange={handleInputChange}></input>
+        <input id="first_name" name="first_name" type="text" required value={formData.first_name} onChange={handleInputChange}></input>
 
         <label htmlFor="last_name">Last Name: </label>
-        <input id="last_name" name="last_name" type="text" value={formData.last_name} onChange={handleInputChange}></input>
+        <input id="last_name" name="last_name" type="text" required value={formData.last_name} onChange={handleInputChange}></input>
 
         <label htmlFor="team">Team: </label>
-        <input id="team" name="team" type="text" value={formData.team} onChange={handleInputChange}></input>
+        <input id="team" name="team" type="text" required value={formData.team} onChange={handleInputChange}></input>
 
         <label htmlFor="rating">Rating: </label>
-        <input id="rating" name="rating" type="number" min="1" max="99" value={formData.rating} onChange={handleInputChange}></input>
+        <input id="rating" name="rating" type="number" min="1" max="99" required value={formData.rating} onChange={handleInputChange}></input>
 
-        <button type="submit" disabled={formData.first_name === "" || formData.last_name === "" || formData.team === "" || formData.rating === "" ? true : false}>{playerToEdit ? "Edit" : "Create"}</button>
-        <button onClick={()=> {setPlayerForm(""); setPlayerToEdit(null)}}>Back</button>
+        <button id="editCreateBtn" type="submit" disabled={formData.first_name === "" || formData.last_name === "" || formData.team === "" || formData.rating === "" ? true : false}>{playerToEdit ? "Edit" : "Create"}</button>
+        <button id="backBtn" onClick={()=> {setPlayerForm(""); setPlayerToEdit(null)}}>Back</button>
 
     </form>
 
