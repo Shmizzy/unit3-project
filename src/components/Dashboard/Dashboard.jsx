@@ -7,11 +7,12 @@ import * as playerService from "../../services/playerService.js";
 const {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer, editPlayer} = playerService; //Destructure - Access fetchPlayers() directly
 
 const Dashboard = () => {
+
     //State
-  
   const [playerList, setPlayerList] = useState([]);
   const [myTeam, setMyTeam] = useState([]);
   const [playerToEdit, setPlayerToEdit] = useState(null);
+  const [playerForm, setPlayerForm] = useState("");
 
   //Functions
   const fetchPlayersDatabase = async () => {
@@ -68,12 +69,16 @@ const Dashboard = () => {
     return(
         <main>
 
-            <Form 
-            handleCreatePlayer={handleCreatePlayer}
-            playerToEdit={playerToEdit}
-            setPlayerToEdit={setPlayerToEdit}
-            handleEditPlayer={handleEditPlayer}
-            />
+            <h4 onClick={()=> setPlayerForm("form")} style={playerForm === "form" ? {display: "none"} : {color: "black"}}>Player Form</h4>
+            {playerForm === "form" && (
+              <Form 
+              handleCreatePlayer={handleCreatePlayer}
+              playerToEdit={playerToEdit}
+              setPlayerToEdit={setPlayerToEdit}
+              handleEditPlayer={handleEditPlayer}
+              setPlayerForm={setPlayerForm}
+              />
+            )}
 
             <PlayerList 
             playerList={playerList}
@@ -81,6 +86,7 @@ const Dashboard = () => {
             myTeam={myTeam}
             handleDeletePlayer={handleDeletePlayer}
             setPlayerToEdit={setPlayerToEdit}
+            setPlayerForm={setPlayerForm}
             />
 
             <MyTeam 
