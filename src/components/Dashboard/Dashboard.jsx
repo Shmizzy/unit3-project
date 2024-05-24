@@ -4,15 +4,16 @@ import PlayerList from "../PlayerList/PlayerList.jsx";
 import {useEffect, useState} from "react";
 import * as playerService from "../../services/playerService.js";
 
-const {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer, editPlayer} = playerService; //Destructure - Access fetchPlayers() directly
+const {fetchPlayers, deletePlayer, createPlayer, editPlayer} = playerService; //Destructure - Access fetchPlayers() directly
 
 const Dashboard = () => {
 
-    //State
+  //State
   const [playerList, setPlayerList] = useState([]);
   const [myTeam, setMyTeam] = useState([]);
   const [playerToEdit, setPlayerToEdit] = useState(null);
   const [playerForm, setPlayerForm] = useState("");
+  
 
   //Functions
   const fetchPlayersDatabase = async () => {
@@ -21,15 +22,6 @@ const Dashboard = () => {
       setPlayerList(listOfPlayers);
     }catch(error){
       console.error(`Error fetching players: ${error}`);
-    }
-  };
-
-  const fetchNBATeamData = async (team) => {
-    try {
-      const NBATeamData = await fetchNBATeam(team);
-      console.log(NBATeamData[0].name); //Fetched NBA Data is an array with one object after searching by team name
-    }catch(error){
-      console.error(error);
     }
   };
 
