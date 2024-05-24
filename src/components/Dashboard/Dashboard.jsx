@@ -8,7 +8,7 @@ const {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer, editPlayer} = pla
 
 const Dashboard = () => {
 
-    //State
+  //State
   const [playerList, setPlayerList] = useState([]);
   const [myTeam, setMyTeam] = useState([]);
   const [playerToEdit, setPlayerToEdit] = useState(null);

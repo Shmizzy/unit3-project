@@ -14,14 +14,18 @@ const NBAForm = ({setRenderNBAForm}) => {
         setFormData({...formData, [event.target.name]: event.target.value});
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        //Fetch logic
+    };
+
   return (
 
-    <form>
+    <form onSubmit={handleSubmit}>
         <label htmlFor="nbaTeam">Team Name: </label>
         <input id="nbaTeam" type="text" name="nbaTeam" value={formData.nbaTeam} onChange={handleInputChange}></input>
         <button type="submit">+</button>
         <button onClick={()=> setRenderNBAForm("")}>Back</button>
-
     </form>
 
   )
