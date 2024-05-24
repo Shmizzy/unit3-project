@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+#myTeamList {
+    list-style-image: url("../../assets/images/basketball-team.png");
+}
+
+#removeBtn {
+    background-color: hsla(360, 83%, 67%, 1);
+}

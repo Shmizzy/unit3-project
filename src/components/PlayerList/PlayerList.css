@@ -6,3 +6,19 @@
     display: flex;
     flex-direction: column;
 }
+
+#addBtn {
+    background-color: hsla(114, 73%, 57%, 1);
+}
+
+#editBtn {
+    background-color: hsla(215, 73%, 57%, 1);
+}
+
+#deleteBtn {
+    background-color: hsla(360, 83%, 67%, 1);
+}
+
+#playerList {
+    list-style-image: url("../../assets/images/basketball-list.png");
+}

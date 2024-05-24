@@ -19,6 +19,11 @@ button {
     margin-left: 5px;
 }
 
+#playerFormBtn {
+    background-color: hsla(35, 100%, 75%, 0.75);
+    
+}
+
 
 
 

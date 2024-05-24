@@ -22,16 +22,16 @@ const PlayerList = (props) => {
 
     <div className="playerListContainer">
         <h2>Locker-Room</h2>
-        <ul>
+        <ul id="playerList">
             {playerList.map((player)=>{
                 return (
                     <li key={player._id}>
                         <h3>Player: {player.first_name} {player.last_name}</h3>
                         <h3>Team: {player.team}</h3>
                         <h3>Rating: {player.rating}</h3>
-                        <button onClick={()=> handleAdd(player)} disabled={myTeam.length === 5 || false}>Add</button>
-                        <button onClick={()=> {handleEdit(player); setPlayerForm("form")}}>Edit</button>
-                        <button onClick={()=> handleDelete(player._id)}>Delete</button>
+                        <button id="addBtn" onClick={()=> handleAdd(player)} disabled={myTeam.length === 5 || false}>Add</button>
+                        <button id="editBtn" onClick={()=> {handleEdit(player); setPlayerForm("form")}}>Edit</button>
+                        <button id="deleteBtn" onClick={()=> handleDelete(player._id)}>Delete</button>
                     </li>
                 )
             })}
