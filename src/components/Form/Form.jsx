@@ -61,7 +61,7 @@ const Form = ({handleCreatePlayer, playerToEdit, setPlayerToEdit, handleEditPlay
         <label htmlFor="rating">Rating: </label>
         <input id="rating" name="rating" type="number" min="1" max="99" required value={formData.rating} onChange={handleInputChange}></input>
 
-        <button id="editCreateBtn" type="submit" disabled={formData.first_name === "" || formData.last_name === "" || formData.team === "" || formData.rating === "" ? true : false}>{playerToEdit ? "Edit" : "Create"}</button>
+        <button id="editCreateBtn" type="submit" style={playerToEdit ? {backgroundColor: "hsla(215, 73%, 57%, 1)"} : {backgroundColor: "hsla(114, 73%, 57%, 1)"}} disabled={formData.first_name === "" || formData.last_name === "" || formData.team === "" || formData.rating === "" ? true : false}>{playerToEdit ? "Edit" : "Create"}</button>
         <button id="backBtn" onClick={()=> {setPlayerForm(""); setPlayerToEdit(null)}}>Back</button>
 
     </form>

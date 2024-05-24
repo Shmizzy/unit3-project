@@ -2,6 +2,7 @@
 import NBAForm from "../NBA-Form/NBAForm";
 import {useState} from "react";
 import * as playerService from "../../services/playerService";
+import "./MyTeam.css";
 
 const {fetchNBATeam} = playerService;
 
@@ -50,14 +51,14 @@ const MyTeam = (props) => {
         
         <h4>{NBATeamName}</h4>
 
-        <ul>
+        <ul id="myTeamList">
             {myTeam.map((player,index)=>{
                 return (
                     <li key={index}>
                         <h3>Player: {player.first_name} {player.last_name}</h3>
                         <h3>Team: {player.team}</h3>
                         <h3>Rating: {player.rating}</h3>
-                        <button onClick={()=> handleRemove(index)}>Remove</button>
+                        <button id="removeBtn" onClick={()=> handleRemove(index)}>Remove</button>
                     </li>
                 )
             })}
