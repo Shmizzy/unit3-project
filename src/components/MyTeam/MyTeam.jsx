@@ -1,14 +1,24 @@
 //Import
 import NBAForm from "../NBA-Form/NBAForm";
 import {useState} from "react";
+shmizzyz/Battle
+import * as authService from '../../services/userAuth';
+import { useContext } from 'react';
+import { AuthedUserContext } from '../../App';
+import { useNavigate } from "react-router-dom";
+
+
 import * as playerService from "../../services/playerService";
 
 const {fetchNBATeam} = playerService;
 
 
+
 const MyTeam = (props) => {
-    
+    const user = useContext(AuthedUserContext);
+    const navigate = useNavigate();
     const {myTeam, setMyTeam} = props;
+    
 
     //State
     const [renderNBAForm, setRenderNBAForm] = useState("");
@@ -17,12 +27,18 @@ const MyTeam = (props) => {
 
     //Functions
     const handleRemove = (subIndex) => {
-        console.log(myTeam)
         const filteredTeam = [...myTeam].filter((mainPlayer,mainIndex) => {
             return mainIndex !== subIndex;
         });
         setMyTeam(filteredTeam);
     };
+
+
+    const handleSetTeam = async () => {
+        const res = await authService.createTeam(myTeam, user._id);     
+        setMyTeam([]);
+        navigate('/battle');
+    }
 
     const fetchNBATeamData = async (team) => {
         try {
@@ -33,6 +49,7 @@ const MyTeam = (props) => {
           console.error(error);
         }
       };
+
     
   return (
 
@@ -64,7 +81,7 @@ const MyTeam = (props) => {
         </ul>
 
         {myTeam.length === 5 && (
-            <button>Save Team</button>
+            <button onClick={handleSetTeam}>Save Team</button>
         )}
 
     </div>

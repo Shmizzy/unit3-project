@@ -53,6 +53,8 @@ const createPlayer = async (playerData) => {
     }
 };
 
+
+
 const editPlayer = async (id, playerData) => {
     try{
         const response = await fetch(`${BASE_URL}/${id}`, {

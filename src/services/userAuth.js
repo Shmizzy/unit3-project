@@ -1,3 +1,4 @@
+
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
 
 const register = async (formData) => {
@@ -14,7 +15,7 @@ const register = async (formData) => {
     }
 } 
 
-const login = async(formData) => {
+const login = async (formData) => {
     try {
         const res = await fetch(BASE_URL + '/auth/login', {
             method: 'POST',
@@ -35,6 +36,45 @@ const login = async(formData) => {
         throw error;
     }
 }
+const createTeam = async(teamData, userId) => {
+    const token = localStorage.getItem('token');
+    if(!token) return null;
+ 
+    try {
+        const res = await fetch(`${BASE_URL}/auth/${userId}/updateTeam`, {
+            method: 'PUT',
+            headers: { 
+                'Authorization': `Bearer ${token}`, 
+                'Content-Type': 'application/json'
+        },
+            body: JSON.stringify({team: teamData})
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getTeam = async(userId) => {
+
+    const token = localStorage.getItem('token');
+    if(!token) return null;
+    try {
+        const res = await fetch(`${BASE_URL}/auth/${userId}/getTeam`, {
+            method: 'GET',
+            headers: { 
+                'Authorization': `Bearer ${token}`, 
+                'Content-Type': 'application/json'
+        },
+        })
+        const data = await res.json();
+        return data.team;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 const getUser = () => {
     const token = localStorage.getItem('token');
@@ -49,4 +89,5 @@ const signOut = () => {
 }
 
 
-export { register, getUser, signOut, login };
+
+export { register, getUser, signOut, login, createTeam, getTeam };

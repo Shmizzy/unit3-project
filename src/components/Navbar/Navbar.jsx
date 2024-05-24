@@ -10,16 +10,19 @@ const Navbar = ({handleSignout}) => {
     if(user){
         return (
             <div className="navBar">
-                <h3 className='battle'>Battle</h3>
-                <h3>{user.username}</h3>
+                
+                <button className='logout' onClick={handleSignout}>Log Out</button>
+                <h3>{user._id}</h3>
                 <div className='navButtons'>
-                    <button onClick={handleSignout}>Log Out</button>
+                    <Link to='/battle'><h3 className='battle'>Battle</h3></Link>
+                    <Link to='/'><h3 className='home'>Home</h3></Link>
                </div>
             </div>
         )
      }else{
         return (
             <div className="navBar">
+                <h2 className='nbaPlayers'>NBA Players</h2>
                 <div className='navButtons'>
                     <Link to='/login'><button>Sign In</button></Link>
                     <Link to='/register'><button>Register</button></Link>
@@ -27,7 +30,6 @@ const Navbar = ({handleSignout}) => {
             </div>
            )
      } 
-        
 }
 
 export default Navbar;

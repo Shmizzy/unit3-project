@@ -11,11 +11,17 @@
     margin-right: 20px;
     gap: 10px;
 }
-.battle{
+.nbaPlayers{
+    margin-left: 20px;
+}
+.battle, .home{
     margin-left: 25px;
     color: grey;
 }
 .battle:hover{
     color: #000000;
     cursor: pointer;
+}
+.logout{
+    margin-left: 20px;
 }
