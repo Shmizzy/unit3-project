@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 
 
-const Form = ({handleCreatePlayer, playerToEdit, setPlayerToEdit, handleEditPlayer}) => {
+const Form = ({handleCreatePlayer, playerToEdit, setPlayerToEdit, handleEditPlayer, setPlayerForm}) => {
 
     //State
     const [formData, setFormData] = useState({
@@ -61,6 +61,7 @@ const Form = ({handleCreatePlayer, playerToEdit, setPlayerToEdit, handleEditPlay
         <input id="rating" name="rating" type="number" min="1" max="99" value={formData.rating} onChange={handleInputChange}></input>
 
         <button type="submit" disabled={formData.first_name === "" || formData.last_name === "" || formData.team === "" || formData.rating === "" ? true : false}>{playerToEdit ? "Edit" : "Create"}</button>
+        <button onClick={()=> setPlayerForm("")}>Back</button>
 
     </form>
 

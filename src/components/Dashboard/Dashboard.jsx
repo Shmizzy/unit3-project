@@ -69,13 +69,14 @@ const Dashboard = () => {
     return(
         <main>
 
-            <h4 onClick={()=> setPlayerForm("form")} style={{textDecoration: "underline", cursor: "pointer"}}>Player Form</h4>
+            <h4 onClick={()=> setPlayerForm("form")}>Player Form</h4>
             {playerForm === "form" && (
               <Form 
               handleCreatePlayer={handleCreatePlayer}
               playerToEdit={playerToEdit}
               setPlayerToEdit={setPlayerToEdit}
               handleEditPlayer={handleEditPlayer}
+              setPlayerForm={setPlayerForm}
               />
             )}
 
