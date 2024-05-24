@@ -2,7 +2,7 @@
 import {useState} from "react";
 
 
-const NBAForm = ({setRenderNBAForm}) => {
+const NBAForm = ({setRenderNBAForm, fetchNBATeamData}) => {
 
     //State
     const [formData, setFormData] = useState({
@@ -17,6 +17,8 @@ const NBAForm = ({setRenderNBAForm}) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         //Fetch logic
+        fetchNBATeamData(formData.nbaTeam);
+        setFormData({nbaTeam: "",});
     };
 
   return (
@@ -24,7 +26,7 @@ const NBAForm = ({setRenderNBAForm}) => {
     <form onSubmit={handleSubmit}>
         <label htmlFor="nbaTeam">Team Name: </label>
         <input id="nbaTeam" type="text" name="nbaTeam" value={formData.nbaTeam} onChange={handleInputChange}></input>
-        <button type="submit">+</button>
+        <button type="submit" disabled={formData.nbaTeam === "" || false}>+</button>
         <button onClick={()=> setRenderNBAForm("")}>Back</button>
     </form>
 
