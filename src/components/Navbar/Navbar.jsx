@@ -12,7 +12,7 @@ const Navbar = ({handleSignout}) => {
             <div className="navBar">
                 
                 <button className='logout' onClick={handleSignout}>Log Out</button>
-                <h3>{user._id}</h3>
+                <h3>{user.username}</h3>
                 <div className='navButtons'>
                     <Link to='/battle'><h3 className='battle'>Battle</h3></Link>
                     <Link to='/'><h3 className='home'>Home</h3></Link>
