@@ -5,6 +5,7 @@ import Signup from './components/Signup/Signup.jsx';
 import Login from './components/Login/Login.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import * as authService from "./services/userAuth.js";
+import Battle from './components/Battle/Battle.jsx';
 
 export const AuthedUserContext = createContext(null);
 
@@ -42,6 +43,7 @@ const App = () => {
         <Route path='/' element={<Dashboard handleSignout={handleSignout}/>} />
         <Route path='/register' element={<Signup setUser={setUser}/>} />
         <Route path='/login' element={<Login setUser={setUser}/>} />
+        <Route path='/battle' element={<Battle />} />
       </Routes>
     </AuthedUserContext.Provider>
      );

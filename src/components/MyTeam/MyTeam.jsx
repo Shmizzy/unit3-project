@@ -1,10 +1,14 @@
 //Import
 import NBAForm from "../NBA-Form/NBAForm";
 import {useState} from "react";
+import * as authService from '../../services/userAuth';
+import { useContext } from 'react';
+import { AuthedUserContext } from '../../App';
+
 
 
 const MyTeam = (props) => {
-    
+    const user = useContext(AuthedUserContext);
     const {myTeam, setMyTeam} = props;
 
     //State
@@ -18,6 +22,12 @@ const MyTeam = (props) => {
         });
         setMyTeam(filteredTeam);
     };
+
+    const handleSetTeam = async () => {
+        const res = await authService.createTeam(myTeam, user._id);
+        console.log(res)
+        setMyTeam([]);
+    }
     
   return (
 
@@ -42,7 +52,7 @@ const MyTeam = (props) => {
         </ul>
 
         {myTeam.length === 5 && (
-            <button>Save Team</button>
+            <button onClick={handleSetTeam}>Save Team</button>
         )}
 
     </div>

@@ -1,3 +1,4 @@
+
 const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
 
 const register = async (formData) => {
@@ -14,7 +15,7 @@ const register = async (formData) => {
     }
 } 
 
-const login = async(formData) => {
+const login = async (formData) => {
     try {
         const res = await fetch(BASE_URL + '/auth/login', {
             method: 'POST',
@@ -35,6 +36,22 @@ const login = async(formData) => {
         throw error;
     }
 }
+const createTeam = async(teamData, userId) => {
+    const token = localStorage.getItem('token');
+    if(!token) return null;
+    try {
+        const res = await fetch(`${BASE_URL}/auth/${userId}/updateTeam`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}`},
+            body: JSON.stringify([...teamData])
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 const getUser = () => {
     const token = localStorage.getItem('token');
@@ -49,4 +66,5 @@ const signOut = () => {
 }
 
 
-export { register, getUser, signOut, login };
+
+export { register, getUser, signOut, login, createTeam };

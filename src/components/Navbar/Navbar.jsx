@@ -10,7 +10,7 @@ const Navbar = ({handleSignout}) => {
     if(user){
         return (
             <div className="navBar">
-                <h3 className='battle'>Battle</h3>
+                <Link to='/battle'><h3 className='battle'>Battle</h3></Link>
                 <h3>{user.username}</h3>
                 <div className='navButtons'>
                     <button onClick={handleSignout}>Log Out</button>
@@ -27,7 +27,6 @@ const Navbar = ({handleSignout}) => {
             </div>
            )
      } 
-        
 }
 
 export default Navbar;
