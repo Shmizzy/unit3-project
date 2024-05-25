@@ -5,6 +5,7 @@
 .playerListContainer {
     display: flex;
     flex-direction: column;
+    font-size: .7rem;
 }
 
 #addBtn {
