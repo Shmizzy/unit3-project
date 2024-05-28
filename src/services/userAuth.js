@@ -195,6 +195,19 @@ const getUser = () => {
 
     return user;
 }
+const getUserData = async(id) => {
+    try {
+        const token = localStorage.getItem('token');
+        if(!token) return null;
+        const res = await fetch('http://localhost:3000/auth/' + id ,{
+            headers: { Authorization: 'Bearer ' + token}
+        });
+        const data = await res.json();
+        return data.user;
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 const signOut = () => {
     localStorage.removeItem('token');
@@ -202,4 +215,4 @@ const signOut = () => {
 
 
 
-export { register, getUser, signOut, login, createTeam, getTeam, setOvr, setLogo, takeL, takeW, giveL, giveW };
+export { register, getUser, getUserData,signOut, login, createTeam, getTeam, setOvr, setLogo, takeL, takeW, giveL, giveW };

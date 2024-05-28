@@ -8,7 +8,7 @@ import { AuthedUserContext } from '../../App';
 
 
 
-const Battle = ({ liftState, }) => {
+const Battle = ({ liftState,setUser }) => {
     const user = useContext(AuthedUserContext);
     const [team, setLoadTeam] = useState([]);
     const [battlePlayers, setBattlePlayers] = useState([]);
@@ -20,19 +20,12 @@ const Battle = ({ liftState, }) => {
 
         const onLoad = async () => {
             const loadUser = authService.getUser();
+            const loadUserData = await authService.getUserData(loadUser.id);
             const loadTeam = await authService.getTeam(loadUser.id);
             const loadBattles = await battleService.fetchBattle();
+            setUser(loadUserData);
             setBattlePlayers(loadBattles);
             setLoadTeam(loadTeam);
-            const copyTeam = [...team];
-            const ratingsArray = copyTeam.map((element) => {
-                return element.rating;
-            });
-            const sumRating = ratingsArray.reduce((accumulator, currentValue) => {
-                return accumulator + currentValue
-            }, 0);
-            /*             const overallRating = sumRating / (ratingsArray.length);
-             */
         }
         onLoad();
     }, [])

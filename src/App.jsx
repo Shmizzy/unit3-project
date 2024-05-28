@@ -23,18 +23,8 @@ const App = () => {
   }
   useEffect(() => {
     const fetchData = async() => {
-      try {
-        const token = localStorage.getItem('token');
-        if(!token) return null;
-        const res = await fetch('http://localhost:3000/auth/' + user.id ,{
-            headers: { Authorization: 'Bearer ' + token}
-        });
-        const data = await res.json();
-        console.log(data)
-        setUser(data.user)
-    } catch (error) {
-        console.log(error)
-    }
+     const userData = await authService.getUserData(user.id);
+      setUser(userData)
     }
     fetchData();
   }, []);
@@ -54,7 +44,7 @@ const App = () => {
         <Route path='/' element={<Dashboard handleSignout={handleSignout}/>} />
         <Route path='/register' element={<Signup setUser={setUser}/>} />
         <Route path='/login' element={<Login setUser={setUser}/>} />
-        <Route path='/battle' element={<Battle liftState={liftState} />} />
+        <Route path='/battle' element={<Battle liftState={liftState} setUser={setUser}/>} />
         <Route path='/battle/confirm' element={<BattleConfirm battlePlayerTeam={battlePlayerTeam} />} />
       </Routes>
     </AuthedUserContext.Provider>
