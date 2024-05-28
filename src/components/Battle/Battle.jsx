@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import * as authService from "../../services/userAuth";
 
 import * as battleService from '../../services/battle';
-import './battle.css'
-
 import './battle.css';
 
 import BattleUsers from '../BattleUsers/BattleUsers';

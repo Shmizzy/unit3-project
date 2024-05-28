@@ -63,7 +63,7 @@ const Dashboard = () => {
         <main>
 
             <div className="left-cell">
-              <button id="playerFormBtn" onClick={()=> setPlayerForm("form")} style={playerForm === "form" ? {display: "none"} : {color: "black"}}>Player Form</button>
+              <button id="playerFormBtn" onClick={()=> setPlayerForm("form")} style={playerForm === "form" ? {display: "none"} : {color: "black"}}>Create Player</button>
               {playerForm === "form" && (
                 <Form 
                 handleCreatePlayer={handleCreatePlayer}

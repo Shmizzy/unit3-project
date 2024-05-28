@@ -9,3 +9,11 @@
 #removeBtn {
     background-color: hsla(360, 83%, 67%, 1);
 }
+
+#listItems {
+    background-color: orange;
+    padding: 0 0 10px 10px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow:  2px 2px 2px black;
+}
