@@ -8,7 +8,8 @@ const Signup = (props) => {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
-        confirmedPassword: ''
+        confirmedPassword: '',
+        
     });
 
     const updateMessage = (msg) => {

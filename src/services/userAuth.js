@@ -72,6 +72,26 @@ const setOvr = async (ovr, userId) => {
     }
 }
 
+const setLogo = async (logo, userId) => {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+        const res = await fetch(`${BASE_URL}/auth/${userId}/updateLogo`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ logo: logo })
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 const getTeam = async (userId) => {
 
     const token = localStorage.getItem('token');
@@ -106,4 +126,4 @@ const signOut = () => {
 
 
 
-export { register, getUser, signOut, login, createTeam, getTeam, setOvr };
+export { register, getUser, signOut, login, createTeam, getTeam, setOvr, setLogo };
