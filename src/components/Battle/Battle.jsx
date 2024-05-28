@@ -1,5 +1,9 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as authService from "../../services/userAuth";
+
+import * as battleService from '../../services/battle';
+import './battle.css'
+
 import './battle.css';
 
 import BattleUsers from '../BattleUsers/BattleUsers';
@@ -10,8 +14,23 @@ import BattleUsers from '../BattleUsers/BattleUsers';
 const Battle = () => {
     const [team, setLoadTeam] = useState([]);
 
+    const [battlePlayers, setBattlePlayers] = useState([]);
+
+
+
+
     //Calculate Average
-    const copyTeam = [...team];
+    
+    
+    useEffect(()=> {
+
+        const onLoad = async () => {
+            const loadUser = authService.getUser();
+            const loadTeam = await authService.getTeam(loadUser.id);
+            const loadBattles = await battleService.fetchBattle();
+            setBattlePlayers(loadBattles);
+            setLoadTeam(loadTeam);
+          const copyTeam = [...team];
     const ratingsArray = copyTeam.map((element)=>{
         return element.rating;
     });
@@ -20,20 +39,16 @@ const Battle = () => {
     },0);
     const overallRating = sumRating / (ratingsArray.length);
 
-    
-    useEffect(()=> {
-        const onLoad = async () => {
-            const loadUser = authService.getUser();
-            const loadTeam =  await authService.getTeam(loadUser.id);
-            setLoadTeam(loadTeam);
         }
         onLoad();
     }, [])
-    
-    return(
+
+
+    console.log(battlePlayers);
+    return (
         <main>
 
-            <div className="leftContainer">
+           <div className="leftContainer">
                 <h3>My Team - Overall: {overallRating}</h3>
                 <ul>
                 {team.map((element, index) => {
@@ -48,8 +63,20 @@ const Battle = () => {
             </div>
 
             <div className="rightContainer">
+            {(battlePlayers.length > 0) ? (
+                    <h1>Loaded {battlePlayers.length} Players....</h1>
+                    
+                ) : (
+                    <h1>Loading Battles....</h1>
+                )}
+          
                 <BattleUsers />
             </div>
+           
+                
+
+
+            
 
         </main>
     )

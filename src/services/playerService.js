@@ -71,7 +71,5 @@ const editPlayer = async (id, playerData) => {
     }
 };
 
-
-
 //Export
 export {fetchPlayers, fetchNBATeam, deletePlayer, createPlayer, editPlayer};
