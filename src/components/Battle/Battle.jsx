@@ -69,7 +69,7 @@ const Battle = () => {
                     <h1>Loading Battles....</h1>
                 )}
 
-                <BattleUsers battlePlayers={battlePlayers}/>
+                <BattleUsers battlePlayers={battlePlayers} />
             </div>
         </main>
     )

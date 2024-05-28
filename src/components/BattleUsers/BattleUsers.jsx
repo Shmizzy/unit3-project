@@ -7,7 +7,7 @@ const { userData } = mockData; // Mock Data - Replace with fetched data from use
 
 const BattleUsers = ({ battlePlayers }) => {
 
-  
+
 
 
   return (
@@ -17,8 +17,8 @@ const BattleUsers = ({ battlePlayers }) => {
         return (
           <li key={index}>
             <h3>{element.username}</h3>
-            {/* <h4>{element.teamName}</h4>
-            <img src={element.teamLogo} alt="teamLogo" width="75px" /> */}
+            {/* <h4>{element.teamName}</h4> */}
+            <img src={element.logo} alt="teamLogo" width="75px" /> 
             <h4>Overall: {element.ovr}</h4>
             <button>Battle</button>
           </li>
