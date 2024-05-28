@@ -8,7 +8,14 @@ const register = async (formData) => {
             body: JSON.stringify(formData)
         });
         const data = await res.json();
-        return data;
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+            const user = JSON.parse(atob(data.token.split('.')[1]));
+            return (user, data.user);
+        }
+        if (data.message) {
+            throw new Error(data.message);
+        }
     } catch (error) {
         console.log(error)
     }
@@ -90,6 +97,75 @@ const setLogo = async (logo, userId) => {
         console.log(error)
     }
 }
+const takeL = async (userId) => {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+        const res = await fetch(BASE_URL + `/auth/${userId}/takeL`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+const takeW = async (userId) => {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+        const res = await fetch(BASE_URL + `/auth/${userId}/takeW`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+const giveL = async (userId, challengerId) => {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+        const res = await fetch(BASE_URL + `/auth/${userId}/giveL/${challengerId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+const giveW = async (userId, challengerId) => {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+        const res = await fetch(BASE_URL + `/auth/${userId}/giveW/${challengerId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 
 const getTeam = async (userId) => {
@@ -126,4 +202,4 @@ const signOut = () => {
 
 
 
-export { register, getUser, signOut, login, createTeam, getTeam, setOvr, setLogo };
+export { register, getUser, signOut, login, createTeam, getTeam, setOvr, setLogo, takeL, takeW, giveL, giveW };

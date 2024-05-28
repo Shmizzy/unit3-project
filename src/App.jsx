@@ -15,7 +15,6 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser());  
 
   //State - Populate BattleConfirm
-  const [userTeam, setuserTeam] = useState();
   const [battlePlayerTeam, setBattlePlayerTeam] = useState();
 
   const handleSignout = () => {
@@ -45,9 +44,7 @@ const App = () => {
     setBattlePlayerTeam(battlePlayerTeam);
   };
 
-  const liftSecondState = (userTeamData) => {
-    setuserTeam(userTeamData);
-  };
+  
 
 
   return(
@@ -57,8 +54,8 @@ const App = () => {
         <Route path='/' element={<Dashboard handleSignout={handleSignout}/>} />
         <Route path='/register' element={<Signup setUser={setUser}/>} />
         <Route path='/login' element={<Login setUser={setUser}/>} />
-        <Route path='/battle' element={<Battle liftState={liftState} liftSecondState={liftSecondState}/>} />
-        <Route path='/battle/confirm' element={<BattleConfirm battlePlayerTeam={battlePlayerTeam} userTeam={userTeam}/>} />
+        <Route path='/battle' element={<Battle liftState={liftState} />} />
+        <Route path='/battle/confirm' element={<BattleConfirm battlePlayerTeam={battlePlayerTeam} />} />
       </Routes>
     </AuthedUserContext.Provider>
      );
