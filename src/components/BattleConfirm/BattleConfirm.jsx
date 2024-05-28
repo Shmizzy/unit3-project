@@ -56,7 +56,7 @@ const BattleConfirm = ({ battlePlayerTeam }) => {
             <main>
                 <div className="userContainer">
                     <h1>My Team</h1>
-                    <h2>Team Overall: {user.ovr}</h2>
+                    <h2>Team Overall: {`${user.ovr}`}</h2>
                     <ul className="teamList">
                         {user.team && user.team.map((element, index) => {
                             return (
