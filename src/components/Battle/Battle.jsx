@@ -1,33 +1,27 @@
 import { useEffect, useState } from 'react';
 import * as authService from "../../services/userAuth";
 import * as battleService from '../../services/battle';
-import { useContext } from 'react';
-import { AuthedUserContext } from '../../App';
 import './battle.css'
 
 
 const Battle = () => {
-    const user = useContext(AuthedUserContext);
     const [team, setLoadTeam] = useState([]);
     const [battlePlayers, setBattlePlayers] = useState([]);
-    const filteredBattles = [];
+
 
     useEffect(() => {
         const onLoad = async () => {
             const loadUser = authService.getUser();
             const loadTeam = await authService.getTeam(loadUser.id);
             const loadBattles = await battleService.fetchBattle();
-            loadBattles.forEach(element => {
-                if (element.username !== user.username) {
-                    filteredBattles.push(element);
-                }
-            })
-            setBattlePlayers(filteredBattles);
+            setBattlePlayers(loadBattles);
             setLoadTeam(loadTeam);
         }
         onLoad();
     }, [])
 
+
+    console.log(battlePlayers);
     return (
         <main>
             <div className='myteamView'>
@@ -43,7 +37,12 @@ const Battle = () => {
                 </ul>
             </div>
             <div className='battlePlayers'>
-
+                {(battlePlayers.length > 0) ? (
+                    <h1>Loaded {battlePlayers.length} Players....</h1>
+                    
+                ) : (
+                    <h1>Loading Battles....</h1>
+                )}
             </div>
         </main>
     )
