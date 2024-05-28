@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 
 
 
-const BattleUsers = ({ battlePlayers }) => {
+const BattleUsers = ({ battlePlayers, liftState }) => {
 
-  
+  const handleClick = (battlePlayerData) => {
+    liftState(battlePlayerData);
+    console.log(battlePlayerData);
+  };
 
 
   return (
@@ -21,7 +24,7 @@ const BattleUsers = ({ battlePlayers }) => {
             {/* <h4>{element.teamName}</h4>
             <img src={element.teamLogo} alt="teamLogo" width="75px" /> */}
             <h4>Overall: {element.ovr}</h4>
-            <button><Link to="/battle/confirm" style={{textDecoration: "none"}}>Battle</Link></button>
+            <button onClick={()=> handleClick(element)}><Link to="/battle/confirm" style={{textDecoration: "none"} }>Battle</Link></button>
           </li>
         )
       })}

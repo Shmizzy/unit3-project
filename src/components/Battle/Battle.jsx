@@ -11,11 +11,11 @@ import BattleUsers from '../BattleUsers/BattleUsers';
 
 
 
-const Battle = () => {
+const Battle = ({liftState, liftSecondState}) => {
     const [team, setLoadTeam] = useState([]);
     const [battlePlayers, setBattlePlayers] = useState([]);
 
-
+    liftSecondState(team);
 
 
     //Calculate Average
@@ -44,6 +44,7 @@ const Battle = () => {
 
 
     console.log(battlePlayers);
+    
     return (
         <main>
 
@@ -53,7 +54,7 @@ const Battle = () => {
                     {team.map((element, index) => {
                         return <li className='playerCard' key={index}>
                             <h4>{`${element.first_name}  ${element.last_name}`}</h4>
-                            <p>-Overall: {element.rating}</p>
+                            <p>-Rating: {element.rating}</p>
                             <p>-Team: {element.team}</p>
                         </li>
 
@@ -69,7 +70,7 @@ const Battle = () => {
                     <h1>Loading Battles....</h1>
                 )}
 
-                <BattleUsers battlePlayers={battlePlayers}/>
+                <BattleUsers battlePlayers={battlePlayers} liftState={liftState}/>
             </div>
             
         </main>
