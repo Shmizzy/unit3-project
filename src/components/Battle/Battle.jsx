@@ -71,6 +71,7 @@ const Battle = ({liftState, liftSecondState}) => {
                 )}
 
                 <BattleUsers battlePlayers={battlePlayers} liftState={liftState}/>
+
             </div>
             
         </main>

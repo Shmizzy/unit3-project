@@ -13,7 +13,6 @@ const BattleUsers = ({ battlePlayers, liftState }) => {
     console.log(battlePlayerData);
   };
 
-
   return (
 
     <ul>
@@ -21,8 +20,8 @@ const BattleUsers = ({ battlePlayers, liftState }) => {
         return (
           <li key={index}>
             <h3>{element.username}</h3>
-            {/* <h4>{element.teamName}</h4>
-            <img src={element.teamLogo} alt="teamLogo" width="75px" /> */}
+            {/* <h4>{element.teamName}</h4> */}
+            <img src={element.logo} alt="teamLogo" width="75px" /> 
             <h4>Overall: {element.ovr}</h4>
             <button onClick={()=> handleClick(element)}><Link to="/battle/confirm" style={{textDecoration: "none"} }>Battle</Link></button>
           </li>
