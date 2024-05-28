@@ -48,7 +48,7 @@ const Battle = () => {
         <main>
 
             <div className="leftContainer">
-                <h3>My Team - Overall: </h3>
+                <h3>My Team </h3>
                 <ul>
                     {team.map((element, index) => {
                         return <li className='playerCard' key={index}>
@@ -71,6 +71,7 @@ const Battle = () => {
 
                 <BattleUsers battlePlayers={battlePlayers} />
             </div>
+            
         </main>
     )
 }
