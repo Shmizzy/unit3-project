@@ -7,6 +7,7 @@ import { AuthedUserContext } from '../../App';
 const Navbar = ({handleSignout}) => {
     const user = useContext(AuthedUserContext);
     
+    
     if(user){
         return (
             <div className="navBar">
