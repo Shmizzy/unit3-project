@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import * as authService from "../../services/userAuth";
 
 import * as battleService from '../../services/battle';
+import './battle.css'
+
 import './battle.css';
 
 import BattleUsers from '../BattleUsers/BattleUsers';
@@ -9,11 +11,11 @@ import BattleUsers from '../BattleUsers/BattleUsers';
 
 
 
-const Battle = ({liftState, liftSecondState}) => {
+const Battle = ({liftState,}) => {
     const [team, setLoadTeam] = useState([]);
     const [battlePlayers, setBattlePlayers] = useState([]);
 
-    liftSecondState(team);
+
 
 
     //Calculate Average
@@ -42,17 +44,16 @@ const Battle = ({liftState, liftSecondState}) => {
 
 
     console.log(battlePlayers);
-    
     return (
         <main>
 
             <div className="leftContainer">
-                <h3>My Team </h3>
+                <h3>My Team - Overall: </h3>
                 <ul>
                     {team.map((element, index) => {
                         return <li className='playerCard' key={index}>
                             <h4>{`${element.first_name}  ${element.last_name}`}</h4>
-                            <p>-Rating: {element.rating}</p>
+                            <p>-Overall: {element.rating}</p>
                             <p>-Team: {element.team}</p>
                         </li>
 
@@ -69,9 +70,7 @@ const Battle = ({liftState, liftSecondState}) => {
                 )}
 
                 <BattleUsers battlePlayers={battlePlayers} liftState={liftState}/>
-
             </div>
-            
         </main>
     )
 }

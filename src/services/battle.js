@@ -10,4 +10,5 @@ const fetchBattle = async () => {
     }
 }
 
+
 export { fetchBattle };
