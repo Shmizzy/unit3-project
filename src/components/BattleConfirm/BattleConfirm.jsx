@@ -1,4 +1,4 @@
-
+import "./BattleConfirm.css";
 
 const BattleConfirm = ({battlePlayerTeam, userTeam}) => {
 
@@ -17,30 +17,30 @@ const BattleConfirm = ({battlePlayerTeam, userTeam}) => {
   return (
 
     <>
-
+        <main>
         <div className="userContainer">
             <h1>My Team</h1>
             <h2>Team Overall: {overallRating}</h2>
-            <ul>
+            <ul className="teamList">
             {userTeam.map((element, index)=>{
                 return (
-                    <li key={index}>
+                    <li key={index} className="listItems">
                         <h3>{element.first_name} {element.last_name}</h3>
                         <h3>Rating: {element.rating}</h3>
                     </li>
                 )
             })}
             </ul>
+            <button>Start</button>
         </div>
-        <hr />
+        
         <div className="opponentContainer">
             <h1>{battlePlayerTeam.username}</h1>
             <h2>Team Overall: {battlePlayerTeam.ovr}</h2>
-            <h2>Team: </h2>
-            <ul>
+            <ul className="teamList">
                 {battlePlayerTeam.team.map((element, index)=>{
                     return (
-                        <li key={index}>
+                        <li key={index} className="listItems">
                             <h3>{element.first_name} {element.last_name}</h3>
                             <h3>Rating: {element.rating}</h3>
                         </li>
@@ -48,9 +48,10 @@ const BattleConfirm = ({battlePlayerTeam, userTeam}) => {
                 })}
             </ul>
         </div>
-   
-    </>
+        </main>
 
+    </>
+    
   )
 }
 

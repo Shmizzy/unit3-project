@@ -76,7 +76,7 @@ const MyTeam = (props) => {
         <ul id="myTeamList">
             {myTeam.map((player,index)=>{
                 return (
-                    <li key={index}>
+                    <li key={index} id="listItems">
                         <h3>Player: {player.first_name} {player.last_name}</h3>
                         <h3>Team: {player.team}</h3>
                         <h3>Rating: {player.rating}</h3>
