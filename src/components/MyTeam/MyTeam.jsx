@@ -22,7 +22,7 @@ const MyTeam = (props) => {
     const [renderNBAForm, setRenderNBAForm] = useState("");
     const [NBALogo, setNBALogo] = useState(null);
     const [NBATeamName, setNBATeamName] = useState("");
-    const [ovr, setOvr] = useState('')
+    
 
     //Functions
     const handleRemove = (subIndex) => {
@@ -42,6 +42,7 @@ const MyTeam = (props) => {
         })
         ovr = sum / myTeam.length;
         const setOvr = await authService.setOvr(ovr, user._id); 
+        const setLogo = await authService.setLogo(NBALogo, user._id); 
         setMyTeam([]);
         navigate('/battle');
     }
