@@ -13,16 +13,15 @@ import BattleUsers from '../BattleUsers/BattleUsers';
 
 const Battle = () => {
     const [team, setLoadTeam] = useState([]);
-
     const [battlePlayers, setBattlePlayers] = useState([]);
 
 
 
 
     //Calculate Average
-    
-    
-    useEffect(()=> {
+
+
+    useEffect(() => {
 
         const onLoad = async () => {
             const loadUser = authService.getUser();
@@ -30,15 +29,15 @@ const Battle = () => {
             const loadBattles = await battleService.fetchBattle();
             setBattlePlayers(loadBattles);
             setLoadTeam(loadTeam);
-          const copyTeam = [...team];
-    const ratingsArray = copyTeam.map((element)=>{
-        return element.rating;
-    });
-    const sumRating = ratingsArray.reduce((accumulator, currentValue)=>{
-        return accumulator + currentValue
-    },0);
-    const overallRating = sumRating / (ratingsArray.length);
-
+            const copyTeam = [...team];
+            const ratingsArray = copyTeam.map((element) => {
+                return element.rating;
+            });
+            const sumRating = ratingsArray.reduce((accumulator, currentValue) => {
+                return accumulator + currentValue
+            }, 0);
+            /*             const overallRating = sumRating / (ratingsArray.length);
+             */
         }
         onLoad();
     }, [])
@@ -48,36 +47,30 @@ const Battle = () => {
     return (
         <main>
 
-           <div className="leftContainer">
-                <h3>My Team - Overall: {overallRating}</h3>
+            <div className="leftContainer">
+                <h3>My Team - Overall: </h3>
                 <ul>
-                {team.map((element, index) => {
+                    {team.map((element, index) => {
                         return <li className='playerCard' key={index}>
                             <h4>{`${element.first_name}  ${element.last_name}`}</h4>
                             <p>-Overall: {element.rating}</p>
                             <p>-Team: {element.team}</p>
                         </li>
-                        
+
                     })}
                 </ul>
             </div>
 
             <div className="rightContainer">
-            {(battlePlayers.length > 0) ? (
+                {(battlePlayers.length > 0) ? (
                     <h1>Loaded {battlePlayers.length} Players....</h1>
-                    
+
                 ) : (
                     <h1>Loading Battles....</h1>
                 )}
-          
-                <BattleUsers />
+
+                <BattleUsers battlePlayers={battlePlayers}/>
             </div>
-           
-                
-
-
-            
-
         </main>
     )
 }

@@ -2,9 +2,9 @@ const BASE_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
 
 const register = async (formData) => {
     try {
-        const res = await fetch (BASE_URL + '/auth/register', {
+        const res = await fetch(BASE_URL + '/auth/register', {
             method: 'POST',
-            headers: {'Content-Type' : 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         });
         const data = await res.json();
@@ -12,17 +12,17 @@ const register = async (formData) => {
     } catch (error) {
         console.log(error)
     }
-} 
+}
 
 const login = async (formData) => {
     try {
         const res = await fetch(BASE_URL + '/auth/login', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
         });
         const data = await res.json();
-        if(data.token){
+        if (data.token) {
             localStorage.setItem('token', data.token);
             const user = JSON.parse(atob(data.token.split('.')[1]));
             return (user, data.user);
@@ -35,18 +35,35 @@ const login = async (formData) => {
         throw error;
     }
 }
-const createTeam = async(teamData, userId) => {
+const createTeam = async (teamData, userId) => {
     const token = localStorage.getItem('token');
-    if(!token) return null;
- 
+    if (!token) return null;
     try {
         const res = await fetch(`${BASE_URL}/auth/${userId}/updateTeam`, {
             method: 'PUT',
-            headers: { 
-                'Authorization': `Bearer ${token}`, 
+            headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
-        },
-            body: JSON.stringify({team: teamData})
+            },
+            body: JSON.stringify({ team: teamData })
+        })
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+const setOvr = async (ovr, userId) => {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    try {
+        const res = await fetch(`${BASE_URL}/auth/${userId}/updateOvr`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ovr: ovr })
         })
         const data = await res.json();
         return data;
@@ -55,17 +72,17 @@ const createTeam = async(teamData, userId) => {
     }
 }
 
-const getTeam = async(userId) => {
+const getTeam = async (userId) => {
 
     const token = localStorage.getItem('token');
-    if(!token) return null;
+    if (!token) return null;
     try {
         const res = await fetch(`${BASE_URL}/auth/${userId}/getTeam`, {
             method: 'GET',
-            headers: { 
-                'Authorization': `Bearer ${token}`, 
+            headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
-        },
+            },
         })
         const data = await res.json();
         return data.team;
@@ -77,9 +94,9 @@ const getTeam = async(userId) => {
 
 const getUser = () => {
     const token = localStorage.getItem('token');
-    if(!token) return null;
+    if (!token) return null;
     const user = JSON.parse(atob(token.split('.')[1]));
-    
+
     return user;
 }
 
@@ -89,4 +106,4 @@ const signOut = () => {
 
 
 
-export { register, getUser, signOut, login, createTeam, getTeam };
+export { register, getUser, signOut, login, createTeam, getTeam, setOvr };

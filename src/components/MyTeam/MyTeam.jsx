@@ -22,6 +22,7 @@ const MyTeam = (props) => {
     const [renderNBAForm, setRenderNBAForm] = useState("");
     const [NBALogo, setNBALogo] = useState(null);
     const [NBATeamName, setNBATeamName] = useState("");
+    const [ovr, setOvr] = useState('')
 
     //Functions
     const handleRemove = (subIndex) => {
@@ -34,6 +35,13 @@ const MyTeam = (props) => {
 
     const handleSetTeam = async () => {
         const res = await authService.createTeam(myTeam, user._id);     
+        let ovr = 0;
+        let sum = 0;
+        myTeam.forEach(player => {
+            sum += player.rating;
+        })
+        ovr = sum / myTeam.length;
+        const setOvr = await authService.setOvr(ovr, user._id); 
         setMyTeam([]);
         navigate('/battle');
     }
