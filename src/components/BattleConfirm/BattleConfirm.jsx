@@ -18,7 +18,7 @@ const BattleConfirm = ({ battlePlayerTeam }) => {
         try {
             await authService.takeW(user._id);
             await authService.giveL(user._id, battlePlayerTeam._id);
-            // TODO
+            navigate("/battle/win");
         } catch (error) {
             console.log(error)
         }
@@ -28,7 +28,7 @@ const BattleConfirm = ({ battlePlayerTeam }) => {
         try {
             await authService.takeL(user._id);
             await authService.giveW(user._id, battlePlayerTeam._id);
-            // TODO
+            navigate("/battle/lost");
         } catch (error) {
             console.log(error)
         }
@@ -48,7 +48,7 @@ const BattleConfirm = ({ battlePlayerTeam }) => {
         } else {
             handleLoss();
             navigate('/battle');
-        };
+        }
     }
 
     return (
@@ -68,7 +68,7 @@ const BattleConfirm = ({ battlePlayerTeam }) => {
                             )
                         })}
                     </ul>
-                    <button onClick={handleBattle}>Start</button>
+                    <button style={{backgroundColor: "green", color: "white"}} onClick={handleBattle}>Start</button>
                 </div>
 
                 <div className="opponentContainer">

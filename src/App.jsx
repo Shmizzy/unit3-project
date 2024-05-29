@@ -7,6 +7,8 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import * as authService from "./services/userAuth.js";
 import Battle from './components/Battle/Battle.jsx';
 import BattleConfirm from './components/BattleConfirm/BattleConfirm.jsx';
+import BattleWin from './components/BattleConfirm/BattleWin.jsx';
+import BattleLost from './components/BattleConfirm/BattleLost.jsx';
 
 export const AuthedUserContext = createContext(null);
 
@@ -46,6 +48,8 @@ const App = () => {
         <Route path='/login' element={<Login setUser={setUser}/>} />
         <Route path='/battle' element={<Battle liftState={liftState} setUser={setUser}/>} />
         <Route path='/battle/confirm' element={<BattleConfirm battlePlayerTeam={battlePlayerTeam} />} />
+        <Route path='/battle/win' element={<BattleWin />} />
+        <Route path='/battle/lost' element={<BattleLost />} />
       </Routes>
     </AuthedUserContext.Provider>
      );

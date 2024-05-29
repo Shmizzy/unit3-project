@@ -36,15 +36,16 @@ const Battle = ({ liftState,setUser }) => {
         <main>
 
             <div className="leftContainer">
-                <h3>My Team - Overall: {user.ovr}</h3>
-                <img src={user.logo} alt="teamLogo" width="75px" /> 
+                <h3 className='playerTitle'>My Team</h3>
+                <img src={user.logo} alt="teamLogo" width="75px" />
+                <h3>Overall: {user.ovr}</h3> 
                 <h3>Record: {user.win}-{user.loss}</h3>
                 <ul>
                     {team.map((element, index) => {
                         return <li className='playerCard' key={index}>
                             <h4>{`${element.first_name}  ${element.last_name}`}</h4>
-                            <p>-Overall: {element.rating}</p>
-                            <p>-Team: {element.team}</p>
+                            <p>Rating: {element.rating}</p>
+                            <p>Team: {element.team}</p>
                         </li>
 
                     })}

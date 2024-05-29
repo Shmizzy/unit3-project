@@ -21,3 +21,18 @@ main {
     align-items: center;
 }
 
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: hsla(35, 100%, 75%, 0.75);
+}
+
+.resultMessage {
+    background-color: hsla(0, 0%, 18%, 0.8);
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    padding: 7px;
+    border-radius: 10px;
+}
+

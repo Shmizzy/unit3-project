@@ -61,7 +61,7 @@ const MyTeam = (props) => {
   return (
 
     <div className="myTeamContainer">
-        <h2>My Team: <button onClick={()=> setRenderNBAForm("form")} style={renderNBAForm === "form" ? {display: "none"} : {color: "black"}}>NBA Logo</button> </h2>
+        <h2 id="myTitle">My Team: <button id="nbabtn" onClick={()=> setRenderNBAForm("form")} style={renderNBAForm === "form" ? {display: "none"} : {color: "black"}}>NBA Logo</button> </h2>
         
         {renderNBAForm === "form" && (
             <NBAForm 

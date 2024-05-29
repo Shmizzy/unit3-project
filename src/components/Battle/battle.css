@@ -15,5 +15,6 @@ main {
     width: 350px;
     border-radius: 10px;
     box-shadow:  2px 2px 2px black;
+    list-style-image: url("../../assets/images/basketball-list.png");
 }
 

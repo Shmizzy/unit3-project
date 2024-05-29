@@ -21,7 +21,7 @@ const PlayerList = (props) => {
   return (
 
     <div className="playerListContainer">
-        <h2>Locker-Room</h2>
+        <h2 id="title">Locker-Room</h2>
         <ul id="playerList">
             {playerList.map((player)=>{
                 return (
