@@ -199,7 +199,11 @@ const getUserData = async(id) => {
     try {
         const token = localStorage.getItem('token');
         if(!token) return null;
+<<<<<<< HEAD
         const res = await fetch(BASE_URL + '/auth/' + id ,{
+=======
+        const res = await fetch(`${BASE_URL}/auth/` + id ,{
+>>>>>>> 106cb6c7e07736b8376b32fd522eaf7767215c37
             headers: { Authorization: 'Bearer ' + token}
         });
         const data = await res.json();
