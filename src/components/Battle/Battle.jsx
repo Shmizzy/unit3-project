@@ -37,6 +37,7 @@ const Battle = ({ liftState,setUser }) => {
 
             <div className="leftContainer">
                 <h3>My Team - Overall: {user.ovr}</h3>
+                <img src={user.logo} alt="teamLogo" width="75px" /> 
                 <h3>Record: {user.win}-{user.loss}</h3>
                 <ul>
                     {team.map((element, index) => {

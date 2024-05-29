@@ -34,15 +34,15 @@ const MyTeam = (props) => {
 
 
     const handleSetTeam = async () => {
-        const res = await authService.createTeam(myTeam, user._id);     
+         await authService.createTeam(myTeam, user._id);     
         let ovr = 0;
         let sum = 0;
         myTeam.forEach(player => {
             sum += player.rating;
         })
         ovr = sum / myTeam.length;
-        const setOvr = await authService.setOvr(ovr, user._id); 
-        const setLogo = await authService.setLogo(NBALogo, user._id); 
+         await authService.setOvr(ovr, user._id); 
+        await authService.setLogo(NBALogo, user._id); 
         setMyTeam([]);
         navigate('/battle');
     }

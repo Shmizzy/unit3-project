@@ -18,6 +18,7 @@ const BattleConfirm = ({ battlePlayerTeam }) => {
         try {
             await authService.takeW(user._id);
             await authService.giveL(user._id, battlePlayerTeam._id);
+            // TODO
         } catch (error) {
             console.log(error)
         }
@@ -27,6 +28,7 @@ const BattleConfirm = ({ battlePlayerTeam }) => {
         try {
             await authService.takeL(user._id);
             await authService.giveW(user._id, battlePlayerTeam._id);
+            // TODO
         } catch (error) {
             console.log(error)
         }
@@ -47,7 +49,6 @@ const BattleConfirm = ({ battlePlayerTeam }) => {
             handleLoss();
             navigate('/battle');
         };
-
     }
 
     return (
